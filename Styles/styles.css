@@ -11,8 +11,6 @@ body {
 
 #wrapper {
   position: absolute;
-  width: 90%;
-  max-width: 600px;
   background-color: #ffffff;
   padding: 120px 40px;
   transform: translate(-50%, -50%);
@@ -22,56 +20,77 @@ body {
   border-radius: 1em;
 }
 
-#timer-box {
-  display: block;
-}
-
 #timer {
-  font-size: 40px;
+  font-size: 80px;
+  margin-bottom: -10px;
 }
 
 #word-ref {
   text-transform: uppercase;
+  height: 40px;
+  margin-bottom: 30px;
 }
 
-#start-btn-cont {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#btn-cont {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 10%;
+  left: 50%;
+  z-index: 1;
 }
 
-#start-btn:hover {
+#start-btn:hover, #play-again-btn:hover {
   cursor: pointer;
 }
 
-#start-btn { 
+#start-btn, #play-again-btn { 
   padding: 10px 10px;
   border-radius: 4px;
   border: none;
 }
 
+#score-window {
+  font-size: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
 #user-input {
+  margin-top: 28px;
   border-width: 1px;
   border-radius: 4px;
-  border-color: rgb(156, 156, 156);
-  padding-left: 10px;
-  height: 35px;
-  width: 300px;
+  background-color: rgb(237, 237, 237);
+  border-style: none;
+  padding-left: 17px;
+  height: 45px;
+  width: 400px;
+  font-size: 15px;
 }
 
 #user-input:focus {
   outline: none;
 }
 
-/* #error-msg {
-  visibility: hidden;
-} */
+#key-cont {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#key-cont div {
+  display: flex;
+}
+
+#error-msg {
+  height: 16px;
+}
 
 .keyboard-button{
   margin-top: 7px;
-  margin-left: 3px;
-  margin-right: 1px;
-  padding: 10px 13px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 13px 18px;
   font-family: 'Poppins';
   font-size: 16px;
   font-weight: bold;

@@ -2,15 +2,16 @@
 <head>
   <title>Unscramble</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel = "stylesheet" href="./styles.css">
+  <link rel = "stylesheet" href="/Styles/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div id="start-btn-cont">
+  <div id="btn-cont">
     <button id="start-btn">Start</button>
+    <button id="play-again-btn" disabled="true">Play Again</button>
   </div>
 
   <div id="wrapper">
@@ -18,11 +19,13 @@
       <p id ="timer">1:00</p>
     </div>
     <div id="word-ref"> </div>
-    <div id="score-window">CURRENT SCORE: 0</div>
-    <div id="error-msg">NOT ENGLISH WORD/ALR ENTERED</div>
+    <div id="score-window">Current Score: 0</div>
+
+
+    <div id="error-msg"></div>
     <input type="text" id="user-input" placeholder="Enter Word" disabled=true>
 
-    <div id="word-cont">
+    <div id="key-cont">
         <div class="first-row">
             <button class="keyboard-button">q</button>
             <button class="keyboard-button">w</button>
@@ -58,5 +61,5 @@
     </div>
 
   </div>
-  <script src="script.js"></script>
+  <script src="/Scripts/script.js"></script>
 </body>

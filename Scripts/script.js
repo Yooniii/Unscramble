@@ -1,17 +1,38 @@
 const url ="https://random-word-api.herokuapp.com/word?length=10";
 const wordRef = document.getElementById("word-ref");
-var input = document.getElementById("user-input");
-const startBtn = document.getElementById("start-btn");
-let allowedKeys = [];
-let wordHistory = [];
-let scoreCount = 0;
-let word;
-let startTimer;
-const startingMinutes = 1;
-let time = startingMinutes * 60;
+const playBtn = document.getElementById("start-btn");
+const playAgainBtn = document.getElementById("play-again-btn");
 const countdownEl = document.getElementById("timer");
+const startingMinutes = 1;
+var input = document.getElementById("user-input");
+var allowedKeys = [];
+var wordHistory = [];
+var scoreCount = 0;
+var word;
+let timer;
+let time;
+playBtn.addEventListener("click", startGame);
 
-startBtn.addEventListener("click", startGame);
+function startGame() {
+  time = startingMinutes * 60;
+  timer = setInterval(updateCountdown, 1000);
+  initBoard();
+  playBtn.disabled = true;
+  input.disabled = false;
+
+  input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      if (checkLetters(input.value, allowedKeys)) {
+        checkWord(input.value); // check for previous entries + valid eng word
+        input.value = "";
+      }
+      else {
+        input.value = "";
+        document.getElementById("error-msg").innerHTML = "Word contains disallowed letters!"
+      }
+    }
+  });
+}
 
 function updateCountdown() {
   const minutes = Math.floor(time / 60);
@@ -24,41 +45,9 @@ function updateCountdown() {
   time--;
 
   if (time < 0) {
-    clearInterval(startTimer);
+    clearInterval(timer);
     endGame();
   }
-}
-
-function startGame() {
-  startTimer = setInterval(updateCountdown, 1000);
-  
-  initBoard();
-  console.log(word);
-  startBtn.disabled = true;
-  input.disabled = false;
-
-  input.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-      if (allowedLetters(input.value, allowedKeys)) {
-        checkWord(input.value); // check for previous entries + valid eng word
-        input.value = "";
-      }
-      else {
-        input.value = "";
-        console.log("contains letters not allowed");
-        document.getElementById("error-msg").innerHTML = "Word contains disallowed letters!"
-      }
-    }
-  });
-}
-
-function allowedLetters(input, allowedKeys) {
-  for (let i = 0; i < input.length; i++) {
-    if (!allowedKeys.includes(input[i])) {
-      return false;
-    }
-  }
-  return true;
 }
 
 function initBoard() {
@@ -67,9 +56,10 @@ function initBoard() {
     .then(words => {
       word = words[0];
       wordRef.innerHTML = word;
+      wordRef.style.fontSize = "40px";
       // initialize grey keyboard
       for (const elem of document.getElementsByClassName("keyboard-button")) {
-        elem.style.backgroundColor = "Grey"
+        elem.style.backgroundColor = "rgb(218, 218, 218)"
       }
       // shade allowed letter keys 
       for (let i=0; i<10; i++) {
@@ -83,13 +73,22 @@ function initBoard() {
 function shadeAllowedKeys(letter) {
   for (const elem of document.getElementsByClassName("keyboard-button")) {
     if (elem.textContent === letter) {
-      if (elem.style.backgroundColor === "Green") {
+      if (elem.style.backgroundColor === "#b2eb99") {
         return;
       }
-      elem.style.backgroundColor = "Green";
+      elem.style.backgroundColor = "#b2eb99";
       break;
     }
   }
+}
+
+function checkLetters (input, allowedKeys) {
+  for (let i = 0; i < input.length; i++) {
+    if (!allowedKeys.includes(input[i])) {
+      return false;
+    }
+  }
+  return true;
 }
 
 async function checkWord(userWord) {
@@ -97,22 +96,16 @@ async function checkWord(userWord) {
   const data = await response.json();
   
     if (data.title === 'No Definitions Found') {
-      console.log(`The word '${userWord}' is not a valid English word.`);
       document.getElementById("error-msg").innerHTML = "Not a valid word!";
 
-    } else if (wordHistory.indexOf(userWord) === -1) {
-      console.log(`The word '${userWord}' is a valid English word.`);
-      
+    } else if (wordHistory.indexOf(userWord) === -1) {      
       updateScore(getPoints(userWord.length));
       document.getElementById("error-msg").innerHTML = "";
       wordHistory.push(userWord);
 
     } else if (wordHistory.indexOf(userWord) >= 0) {
-      console.log("already entered");
-      document.getElementById("error-msg").style.innerHTML = `'${userWord}' was already entered`;
+      document.getElementById("error-msg").innerHTML = userWord + " was already entered";
     }
-
-  // handle 404 errors gracefully
 }
   
 function getPoints(wordLength) {
@@ -127,17 +120,27 @@ function getPoints(wordLength) {
   }
 }
 
-function updateScore(points) {
-  var scoreWindow = document.getElementById("score-window");
-  scoreWindow.innerHTML = "Current Points: " + points;
-  console.log("score updated")
+function updateScore(points) {;
+  document.getElementById("score-window").innerHTML = "Current Score: " + points;
 }
 
 function endGame () {
-  console.log("end");
+  input.value = "";
   input.disabled = true;
+  const wordRef = document.getElementById("word-ref");
+  wordRef.innerHTML = "GAME OVER";
+  document.getElementById("error-msg").innerHTML = "";
+  playAgainBtn.disabled = false;
 
-  // play again?
-  // reset wordHistory
-  // reset scoreCount
+  playAgainBtn.onclick = function () {
+    if (timer) {
+    clearInterval(timer);
+    }
+    allowedKeys = [];
+    wordHistory = [];
+    scoreCount = 0;
+    document.getElementById("score-window").innerHTML = "Current Score: 0";
+    startGame();
+    playAgainBtn.disabled = true;
+  }
 }
