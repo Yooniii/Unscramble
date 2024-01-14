@@ -12,7 +12,7 @@
 # HOW TO PLAY
 
 Given a 10-letter word, the user must create as many words as possible. Letters can be repeated, however duplicate or invalid entries (not found in the English dictionary) do not count. 
-Points are allocated based on complexity (i.e. length). See below for the scoring system: 
+Allowed letters are highlighted in green and points are allocated based on complexity (i.e. length). See below for the scoring system: 
 
 | Word Length   | Point Value |
 | ------------- |-------------|
