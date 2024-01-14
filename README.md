@@ -1,4 +1,4 @@
-# Unscramble 
+# UNSCRAMBLE 
   A simple word game where you must create as many words as possible from a random word, in under a minute.
 
 <div align="center"> 
