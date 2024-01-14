@@ -1,7 +1,8 @@
 # Unscramble 
 
-A simple word game where you must create as many words as possible from a random word, under a minute.
+A simple word game where you must create as many words as possible from a random word, in under a minute.
 
+<div align="center"> <img width="865" alt="unscramble" src="https://github.com/Yooniii/unscramble/assets/111259968/5a1df1a4-4229-4c7f-a692-762fbf968270"> </div>
 
 
 
@@ -21,7 +22,6 @@ Points are allocated based on complexity (i.e. length). See below for the scorin
 
 Scores are updated live with a timer counting down. At the end of the game, the player can play subsequent games by clicking 'play again'.
 
-<img width="865" alt="unscramble" src="https://github.com/Yooniii/unscramble/assets/111259968/5a1df1a4-4229-4c7f-a692-762fbf968270">
 
 
 
