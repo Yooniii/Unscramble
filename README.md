@@ -1,8 +1,9 @@
 # Unscramble 
 
-A simple word game where you must create as many words as possible from a random word, in under a minute.
-
-<div align="center"> <img width="865" alt="unscramble" src="https://github.com/Yooniii/unscramble/assets/111259968/5a1df1a4-4229-4c7f-a692-762fbf968270"> </div>
+<div align="center"> 
+  A simple word game where you must create as many words as possible from a random word, in under a minute.
+  <img width="400" alt="unscramble" src="https://github.com/Yooniii/unscramble/assets/111259968/5a1df1a4-4229-4c7f-a692-762fbf968270"> 
+</div>
 
 
 
