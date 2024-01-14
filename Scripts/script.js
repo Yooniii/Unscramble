@@ -114,7 +114,7 @@ function getPoints(wordLength) {
   } else if (wordLength === 4 || wordLength=== 5) {
     return scoreCount += 4;
   } else if (wordLength >= 6 && wordLength <= 9) {
-    return scoreCount += 5;
+    return scoreCount += 6;
   } else if (wordLength >= 10) {
     return scoreCount += 10;
   }
