@@ -21,7 +21,7 @@ Allowed letters are highlighted in green and points are allocated based on compl
 |      6-9      |       6     |
 |      10+      |       10    |
 
-Scores are updated live with a timer counting down. At the end of the game, the player can play subsequent games by clicking 'play again'.
+Scores are updated live with a timer counting down. Subsequent games can be played again by clicking 'play again' to clear the history and generate a new word.
 
 
 
