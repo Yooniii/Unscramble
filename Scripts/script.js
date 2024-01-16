@@ -22,7 +22,7 @@ function startGame() {
 
   input.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
-      if (checkLetters(input.value, allowedKeys)) {
+      if (checkLetters(input.value.toLowerCase(), allowedKeys)) {
         checkWord(input.value); // check for previous entries + valid eng word
         input.value = "";
       }
@@ -107,6 +107,7 @@ async function checkWord(userWord) {
           document.getElementById("error-msg").innerHTML = userWord + " was already entered";
         }
       })
+    .catch(error => console.error(error));
 }
 
   
