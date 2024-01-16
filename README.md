@@ -1,4 +1,4 @@
-# UNSCRAMBLE 
+# Unscramble 
   A simple word game where you must create as many words as possible from a random word, in under a minute.
 
 <div align="center"> 
@@ -9,7 +9,7 @@
 
 
 
-# HOW TO PLAY
+# How to Play
 
 Given a 10-letter word, the user must create as many words as possible. Letters can be repeated, however duplicate or invalid entries (not found in the English dictionary) do not count. 
 Allowed letters are highlighted in green and points are allocated based on complexity (i.e. length). See below for the scoring system: 
