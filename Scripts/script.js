@@ -114,7 +114,7 @@ async function checkWord(userWord) {
 function getPoints(wordLength) {
   if (wordLength >= 1 && wordLength <= 3) {
     return scoreCount += 2;
-  } else if (wordLength === 4 || wordLength=== 5) {
+  } else if (wordLength === 4 || wordLength === 5) {
     return scoreCount += 4;
   } else if (wordLength >= 6 && wordLength <= 9) {
     return scoreCount += 6;
